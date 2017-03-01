@@ -26,74 +26,70 @@
 #include <stdbool.h>
 #include "inc/hw_memmap.h"
 #include "driverlib/gpio.h"
+#include "driverlib/gpio.c"
 #include "driverlib/sysctl.h"
 
-//*****************************************************************************
-//
-//! \addtogroup example_list
-//! <h1>Blinky (blinky)</h1>
-//!
-//! A very simple example that blinks the on-board LED.
-//
-//*****************************************************************************
+//Timer stuff
+#include "driverlib/timer.h"
 
-//*****************************************************************************
-//
-// Blink the on-board LED.
-//
-//*****************************************************************************
+
+void
+Timer0IntHandler(void)
+{
+    //
+    // Clear the timer interrupt.
+    //
+    TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+
+    //
+    // Toggle the flag for the first timer.
+    //
+    //HWREGBITW(&g_ui32Flags, 0) ^= 1;
+
+    if( !GPIOPinRead(GPIO_PORTN_BASE,GPIO_PIN_5) ) {
+        // LED is off, turn it on
+        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_5, GPIO_PIN_5);
+    }
+    else {
+        // Turn off the LED.
+        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_5, 0x0);
+    }
+}
+#define BASE_CLK 120000000  // 120MHz
+void runTimer0AsPeriodic(uint32_t secs) {
+    // Enable TIMER0 peripheral
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
+    // Setup TIMER0 to periodic behaviour
+    TimerConfigure(TIMER0_BASE, TIMER_CFG_PERIODIC);
+    // Register the interrupt
+    TimerIntRegister(TIMER0_BASE, TIMER_A, Timer0IntHandler);
+    TimerLoadSet(TIMER0_BASE, TIMER_A, secs*BASE_CLK);
+    TimerIntEnable(TIMER0_BASE, TIMER_A);
+    TimerEnable(TIMER0_BASE, TIMER_A);
+}
+
+
 int
 main(void)
 {
-    //while(1); // Do nothing
 
-    volatile uint32_t ui32Loop;
-
-    //
     // Enable the GPIO port that is used for the on-board LED.
-    //
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION);
 
-    //
     // Check if the peripheral access is enabled.
-    //
     while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPION))
     {
     }
 
-    //
     // Enable the GPIO pin for the LED (PQ7).  Set the direction as output, and
     // enable the GPIO pin for digital function.
-    //
     GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_5);
 
-    //
-    // Loop forever.
-    //
+    runTimer0AsPeriodic(1);
+
+    // Loop forever while the timers run.
+
     while(1)
     {
-        //
-        // Turn on the LED.
-        //
-        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_5, GPIO_PIN_5);
-
-        //
-        // Delay for a bit.
-        //
-        for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
-        {
-        }
-
-        //
-        // Turn off the LED.
-        //
-        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_5, 0x0);
-
-        //
-        // Delay for a bit.
-        //
-        for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
-        {
-        }
     }
 }

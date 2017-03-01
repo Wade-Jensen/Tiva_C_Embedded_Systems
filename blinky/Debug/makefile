@@ -15,7 +15,7 @@ ORDERED_OBJS += \
 "../blinky_ccs.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
--l"H:/cc_workspace/TivaWare_C_Series-2.1.3.156/driverlib/ccs/Debug/driverlib.lib" \
+-l"H:/ti_workspace/TivaWare_C_Series-2.1.3.156/driverlib/ccs/Debug/driverlib.lib" \
 
 -include ../makefile.init
 

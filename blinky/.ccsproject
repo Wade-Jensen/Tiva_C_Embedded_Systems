@@ -8,6 +8,5 @@
 	<isElfFormat value="true"/>
 	<rts value="libc.a"/>
 	<createSlaveProjects value=""/>
-	<origin value="H:/cc_workspace/TivaWare_C_Series-2.1.3.156/examples/boards/dk-tm4c129x/blinky/ccs"/>
-	<isTargetManual value="true"/>
+	<origin value="H:/ti_workspace/TivaWare_C_Series-2.1.3.156/examples/boards/dk-tm4c129x/blinky/ccs"/>
 </projectOptions>
