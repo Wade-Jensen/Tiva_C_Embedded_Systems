@@ -45,8 +45,9 @@ Timer0IntHandler(void)
     // Toggle the flag for the first timer.
     //
     //HWREGBITW(&g_ui32Flags, 0) ^= 1;
-
+    uint32_t valadf = GPIOPinRead(GPIO_PORTN_BASE,GPIO_PIN_5);
     if( !GPIOPinRead(GPIO_PORTN_BASE,GPIO_PIN_5) ) {
+
         // LED is off, turn it on
         GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_5, GPIO_PIN_5);
     }
