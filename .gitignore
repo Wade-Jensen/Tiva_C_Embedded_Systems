@@ -9,3 +9,6 @@ Backup of EGH456 Lab 1.wbk
 EGH456 Lab 1.docx
 RemoteSystemsTempFiles/.project
 ~$H456 Lab 1.docx
+*.obj
+*.bin
+*.out
