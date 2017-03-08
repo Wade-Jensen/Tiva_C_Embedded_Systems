@@ -25,6 +25,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include "inc/tm4c1297nczad.h"
 #include "inc/hw_memmap.h"
 #include "inc/hw_types.h"
 #include "driverlib/gpio.h"
@@ -1296,11 +1297,19 @@ main(void)
     PinoutSet();
 
     /* ------------------- Lab 1 Part C - 2 -------------------------- */
-    //SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION); // Redundant due to PinoutSet()
-    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPION)){
-    }
-    GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_5);
-    GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_5, GPIO_PIN_5);
+
+    /*
+        //SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION); // Redundant due to PinoutSet()
+        while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPION)){
+        }
+        GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_5);
+        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_5, GPIO_PIN_5);
+    */
+
+    SYSCTL_RCGCGPIO_R=SYSCTL_RCGCGPIO_R14;// R14 matches PORTQ
+    GPIO_PORTQ_DIR_R=0b10000000; // Set the direction to output
+    GPIO_PORTQ_DATA_R = 0b10000000;
+
 
     //
     // Initialize the display driver.
