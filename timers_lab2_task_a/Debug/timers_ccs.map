@@ -1,0 +1,513 @@
+******************************************************************************
+                  TI ARM Linker PC v16.9.0                     
+******************************************************************************
+>> Linked Wed Mar 15 17:39:00 2017
+
+OUTPUT FILE NAME:   <timers_lab2_task_a.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00003f09
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00100000  0000815c  000f7ea4  R  X
+  SRAM                  20000000   00040000  00000470  0003fb90  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00008160   00008160    r-x
+  00000000    00000000    00000200   00000200    r-- .intvecs
+  00000200    00000200    00004270   00004270    r-x .text
+  00004470    00004470    00003cb4   00003cb4    r-- .const
+  00008128    00008128    00000038   00000038    r-- .cinit
+20000000    20000000    00000470   00000000    rw-
+  20000000    20000000    00000400   00000000    rw- .stack
+  20000400    20000400    00000054   00000000    rw- .bss
+  20000454    20000454    0000001c   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000200     
+                  00000000    00000200     startup_ccs.obj (.intvecs)
+
+.text      0    00000200    00004270     
+                  00000200    0000113a     rtsv7M4_T_le_v4SPD16_eabi.lib : _printfi.obj (.text)
+                  0000133a    00000002     startup_ccs.obj (.text:FaultISR)
+                  0000133c    000004b8     pinout.obj (.text:PinoutSet)
+                  000017f4    00000484     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119Init)
+                  00001c78    00000374     grlib.lib : image.obj (.text:InternalImageDraw)
+                  00001fec    000002f8               : image.obj (.text:PixelTransparentDraw)
+                  000022e4    00000254               : string.obj (.text:GrFontGlyphRender)
+                  00002538    000001f8     frame.obj (.text:FrameDraw)
+                  00002730    000001f4     rtsv7M4_T_le_v4SPD16_eabi.lib : ull_div_t2.obj (.text)
+                  00002924    000001ec     driverlib.lib : sysctl.obj (.text:SysCtlClockFreqSet)
+                  00002b10    000001cc     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119PixelDrawMultiple)
+                  00002cdc    000001b6     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_add_t2.obj (.text)
+                  00002e92    00000002     startup_ccs.obj (.text:IntDefaultHandler)
+                  00002e94    00000194     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119RectFill)
+                  00003028    00000164     timers.obj (.text:main)
+                  0000318c    00000136     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_div_t2.obj (.text)
+                  000032c2    00000132     driverlib.lib : gpio.obj (.text:GPIOPadConfigSet)
+                  000033f4    000000fc     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_mul_t2.obj (.text)
+                  000034f0    000000fc                                   : s_scalbn.obj (.text)
+                  000035ec    000000c0     grlib.lib : string.obj (.text:GrDefaultStringRenderer)
+                  000036ac    000000b0     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119LineDrawH)
+                  0000375c    000000b0     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119LineDrawV)
+                  0000380c    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  000038a8    00000086                                   : fd_cmp_t2.obj (.text:__aeabi_cdcmple)
+                  0000392e    00000086                                   : fd_cmp_t2.obj (.text:__aeabi_cdrcmple)
+                  000039b4    0000007a                                   : memset_t2.obj (.text)
+                  00003a2e    00000002     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119Flush)
+                  00003a30    00000078     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119PixelDraw)
+                  00003aa8    00000070     timers.obj (.text:Timer1IntHandler)
+                  00003b18    00000070     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.obj (.text)
+                  00003b88    0000006c     timers.obj (.text:Timer0IntHandler)
+                  00003bf4    00000068     grlib.lib : context.obj (.text:GrContextInit)
+                  00003c5c    00000068               : string.obj (.text:GrStringWidthGet)
+                  00003cc4    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.obj (.text:decompress:lzss)
+                  00003d2c    00000066     grlib.lib : context.obj (.text:GrContextClipRegionSet)
+                  00003d92    00000002     startup_ccs.obj (.text:NmiSR)
+                  00003d94    00000064     rtsv7M4_T_le_v4SPD16_eabi.lib : s_frexp.obj (.text)
+                  00003df8    00000060                                   : sprintf.obj (.text)
+                  00003e58    0000005a     grlib.lib : string.obj (.text:FontWideGlyphDataGet)
+                  00003eb2    00000056     rtsv7M4_T_le_v4SPD16_eabi.lib : ltoa.obj (.text)
+                  00003f08    00000054                                   : boot.obj (.text)
+                  00003f5c    00000054                                   : exit.obj (.text)
+                  00003fb0    0000004c                                   : atoi.obj (.text)
+                  00003ffc    0000004c                                   : cpy_tbl.obj (.text)
+                  00004048    0000004a     grlib.lib : string.obj (.text:UpdateContextCharMapping)
+                  00004092    00000002     rtsv7M4_T_le_v4SPD16_eabi.lib : mpu_init.obj (.text)
+                  00004094    00000048     driverlib.lib : sysctl.obj (.text:_SysCtlFrequencyGet)
+                  000040dc    00000048     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_toi_t2.obj (.text)
+                  00004124    0000003c     driverlib.lib : lcd.obj (.text:LCDIDDTimingSet)
+                  00004160    0000003a     grlib.lib : string.obj (.text:FontGlyphDataGet)
+                  0000419a    00000002     rtsv7M4_T_le_v4SPD16_eabi.lib : startup.obj (.text)
+                  0000419c    00000034     driverlib.lib : sysctl.obj (.text:SysCtlPeripheralEnable)
+                  000041d0    0000002e     grlib.lib : string.obj (.text:GrStringNextCharGet)
+                  000041fe    0000002e     rtsv7M4_T_le_v4SPD16_eabi.lib : i_tofd_t2.obj (.text)
+                  0000422c    0000002c     grlib.lib : string.obj (.text:GrFontBaselineGet)
+                  00004258    0000002a     driverlib.lib : gpio.obj (.text:GPIODirModeSet)
+                  00004282    00000026     grlib.lib : string.obj (.text:GrFontInfoGet)
+                  000042a8    00000022               : string.obj (.text:GrFontGlyphDataGet)
+                  000042ca    00000022     driverlib.lib : lcd.obj (.text:LCDModeSet)
+                  000042ec    00000020                   : sysctl.obj (.text:_SysCtlMemTimingGet)
+                  0000430c    0000001e     grlib.lib : string.obj (.text:GrFontCodepageGet)
+                  0000432a    0000001c     rtsv7M4_T_le_v4SPD16_eabi.lib : memccpy.obj (.text)
+                  00004346    00000002     --HOLE-- [fill = 0]
+                  00004348    00000018                                   : args_main.obj (.text)
+                  00004360    00000016     grlib.lib : string.obj (.text:GrStringDraw)
+                  00004376    00000016     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119ColorTranslate)
+                  0000438c    00000016     rtsv7M4_T_le_v4SPD16_eabi.lib : strchr.obj (.text)
+                  000043a2    00000002     --HOLE-- [fill = 0]
+                  000043a4    00000014                                   : _lock.obj (.text)
+                  000043b8    00000014                                   : s_copysign.obj (.text)
+                  000043cc    00000014                                   : strlen.obj (.text)
+                  000043e0    00000012     driverlib.lib : gpio.obj (.text:GPIOPinTypeEthernetLED)
+                  000043f2    00000012                   : gpio.obj (.text:GPIOPinTypeLCD)
+                  00004404    0000000e     grlib.lib : image.obj (.text:GrImageDraw)
+                  00004412    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
+                  00004420    0000000c     driverlib.lib : lcd.obj (.text:LCDIDDCommandWrite)
+                  0000442c    0000000c                   : lcd.obj (.text:LCDIDDDataWrite)
+                  00004438    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.obj (.text:decompress:ZI)
+                  00004444    00000008     grlib.lib : charmap.obj (.text:GrMapISO8859_1_Unicode)
+                  0000444c    00000006     driverlib.lib : gpio.obj (.text:GPIOPinWrite)
+                  00004452    00000006     grlib.lib : string.obj (.text:GrContextFontSet)
+                  00004458    00000006     startup_ccs.obj (.text:ResetISR)
+                  0000445e    00000006     driverlib.lib : sysctl.obj (.text:SysCtlDelay)
+                  00004464    00000004                   : lcd.obj (.text:LCDDMAConfigSet)
+                  00004468    00000004                   : lcd.obj (.text:LCDIDDConfigSet)
+                  0000446c    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.obj (.text)
+
+.const     0    00004470    00003cb4     
+                  00004470    00001a46     frame.obj (.const:.string:g_pui8Top)
+                  00005eb6    00000786     frame.obj (.const:.string:g_pui8Bottom)
+                  0000663c    00000782     grlib.lib : fontcmss18b.obj (.const:.string:g_pui8Cmss18bData)
+                  00006dbe    00000546     frame.obj (.const:.string:g_pui8Left)
+                  00007304    00000546     frame.obj (.const:.string:g_pui8Right)
+                  0000784a    00000002     --HOLE-- [fill = 0]
+                  0000784c    000001b0     driverlib.lib : sysctl.obj (.const:g_pppui32XTALtoVCO)
+                  000079fc    0000017c     frame.obj (.const:.string:g_pui8TopLeft)
+                  00007b78    00000173     frame.obj (.const:.string:g_pui8TopRight)
+                  00007ceb    00000101     rtsv7M4_T_le_v4SPD16_eabi.lib : ctype.obj (.const:.string:_ctypes_)
+                  00007dec    000000d0     frame.obj (.const:.string:g_pui8BottomLeft)
+                  00007ebc    000000c8     grlib.lib : fontcmss18b.obj (.const:g_sFontCmss18b)
+                  00007f84    000000c4     frame.obj (.const:.string:g_pui8BottomRight)
+                  00008048    0000006c     driverlib.lib : sysctl.obj (.const:g_pui32Xtals)
+                  000080b4    00000030                   : sysctl.obj (.const:g_sXTALtoMEMTIM)
+                  000080e4    00000028     kentec320x240x16_ssd2119.obj (.const:g_sKentec320x240x16_SSD2119)
+                  0000810c    00000010     grlib.lib : context.obj (.const)
+                  0000811c    00000008     driverlib.lib : sysctl.obj (.const)
+
+.cinit     0    00008128    00000038     
+                  00008128    00000011     (.cinit..data.load) [load image, compression = lzss]
+                  00008139    00000003     --HOLE-- [fill = 0]
+                  0000813c    0000000c     (__TI_handler_table)
+                  00008148    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00008150    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.stack     0    20000000    00000400     UNINITIALIZED
+                  20000000    00000400     --HOLE--
+
+.bss       0    20000400    00000054     UNINITIALIZED
+                  20000400    0000002c     (.common:g_sContext)
+                  2000042c    00000020     (.common:g_pui8Dictionary)
+                  2000044c    00000004     (.common:g_psGrLibDefaults)
+                  20000450    00000004     (.common:g_ui32Flags)
+
+.data      0    20000454    0000001c     UNINITIALIZED
+                  20000454    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.data:$O1$$)
+                  20000460    00000008                                   : _lock.obj (.data:$O1$$)
+                  20000468    00000004                                   : errno.obj (.data)
+                  2000046c    00000004                                   : stkdepth_vars.obj (.data)
+
+MODULE SUMMARY
+
+       Module                         code    ro data   rw data
+       ------                         ----    -------   -------
+    .\
+       timers.obj                     576     0         48     
+       startup_ccs.obj                12      512       0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         588     512       48     
+                                                               
+    .\drivers\
+       frame.obj                      504     12507     0      
+       kentec320x240x16_ssd2119.obj   2516    40        0      
+       pinout.obj                     1208    0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         4228    12547     0      
+                                                               
+    C:\ti\ccsv7\tools\compiler\ti-cgt-arm_16.9.0.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       _printfi.obj                   4410    0         0      
+       ull_div_t2.obj                 500     0         0      
+       fd_add_t2.obj                  438     0         0      
+       fd_div_t2.obj                  310     0         0      
+       fd_cmp_t2.obj                  268     0         0      
+       ctype.obj                      0       257       0      
+       fd_mul_t2.obj                  252     0         0      
+       s_scalbn.obj                   252     0         0      
+       memcpy_t2.obj                  156     0         0      
+       memset_t2.obj                  122     0         0      
+       autoinit.obj                   112     0         0      
+       copy_decompress_lzss.obj       104     0         0      
+       s_frexp.obj                    100     0         0      
+       exit.obj                       84      0         12     
+       sprintf.obj                    96      0         0      
+       ltoa.obj                       86      0         0      
+       boot.obj                       84      0         0      
+       atoi.obj                       76      0         0      
+       cpy_tbl.obj                    76      0         0      
+       fd_toi_t2.obj                  72      0         0      
+       i_tofd_t2.obj                  46      0         0      
+       _lock.obj                      20      0         8      
+       memccpy.obj                    28      0         0      
+       args_main.obj                  24      0         0      
+       strchr.obj                     22      0         0      
+       s_copysign.obj                 20      0         0      
+       strlen.obj                     20      0         0      
+       copy_decompress_none.obj       14      0         0      
+       copy_zero_init.obj             12      0         0      
+       errno.obj                      0       0         4      
+       pre_init.obj                   4       0         0      
+       stkdepth_vars.obj              0       0         4      
+       mpu_init.obj                   2       0         0      
+       startup.obj                    2       0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         7812    257       28     
+                                                               
+    H:/cc_workspace/TivaWare_C_Series-2.1.3.156/driverlib/ccs/Debug/driverlib.lib
+       sysctl.obj                     654     596       0      
+       gpio.obj                       390     0         0      
+       lcd.obj                        126     0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         1170    596       0      
+                                                               
+    H:/cc_workspace/TivaWare_C_Series-2.1.3.156/grlib/ccs/Debug/grlib.lib
+       fontcmss18b.obj                0       2122      0      
+       image.obj                      1658    0         32     
+       string.obj                     1334    0         0      
+       context.obj                    206     16        4      
+       charmap.obj                    8       0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         3206    2138      36     
+                                                               
+       Stack:                         0       0         1024   
+       Linker Generated:              0       53        0      
+    +--+------------------------------+-------+---------+---------+
+       Grand Total:                   17004   16103     1136   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00008150 records: 2, size/record: 8, table size: 16
+	.data: load addr=00008128, load size=00000011 bytes, run addr=20000454, run size=0000001c bytes, compression=lzss
+	.bss: load addr=00008148, load size=00000008 bytes, run addr=20000400, run size=00000054 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 0000813c records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+00003f5d  C$$EXIT                        
+00002539  FrameDraw                      
+00004259  GPIODirModeSet                 
+000032c3  GPIOPadConfigSet               
+000043e1  GPIOPinTypeEthernetLED         
+000043f3  GPIOPinTypeLCD                 
+0000444d  GPIOPinWrite                   
+00003d2d  GrContextClipRegionSet         
+00004453  GrContextFontSet               
+00003bf5  GrContextInit                  
+000035ed  GrDefaultStringRenderer        
+0000422d  GrFontBaselineGet              
+0000430d  GrFontCodepageGet              
+000042a9  GrFontGlyphDataGet             
+000022e5  GrFontGlyphRender              
+00004283  GrFontInfoGet                  
+00004405  GrImageDraw                    
+00004445  GrMapISO8859_1_Unicode         
+00004361  GrStringDraw                   
+000041d1  GrStringNextCharGet            
+00003c5d  GrStringWidthGet               
+000017f5  Kentec320x240x16_SSD2119Init   
+00004465  LCDDMAConfigSet                
+00004421  LCDIDDCommandWrite             
+00004469  LCDIDDConfigSet                
+0000442d  LCDIDDDataWrite                
+00004125  LCDIDDTimingSet                
+000042cb  LCDModeSet                     
+0000133d  PinoutSet                      
+00004459  ResetISR                       
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
+00002925  SysCtlClockFreqSet             
+0000445f  SysCtlDelay                    
+0000419d  SysCtlPeripheralEnable         
+00003b89  Timer0IntHandler               
+00003aa9  Timer1IntHandler               
+20000400  __STACK_END                    
+00000400  __STACK_SIZE                   
+20000400  __STACK_TOP                    
+00008150  __TI_CINIT_Base                
+00008160  __TI_CINIT_Limit               
+0000813c  __TI_Handler_Table_Base        
+00008148  __TI_Handler_Table_Limit       
+00003b19  __TI_auto_init                 
+20000454  __TI_cleanup_ptr               
+00003cc5  __TI_decompress_lzss           
+00004413  __TI_decompress_none           
+20000458  __TI_dtors_ptr                 
+2000045c  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+00000a41  __TI_printfi                   
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+00000000  __TI_static_base__             
+00004439  __TI_zero_init                 
+000038a9  __aeabi_cdcmpeq                
+000038a9  __aeabi_cdcmple                
+0000392f  __aeabi_cdrcmple               
+000040dd  __aeabi_d2iz                   
+00002ce7  __aeabi_dadd                   
+0000318d  __aeabi_ddiv                   
+000033f5  __aeabi_dmul                   
+00002cdd  __aeabi_dsub                   
+000041ff  __aeabi_i2d                    
+000039b5  __aeabi_memclr                 
+000039b5  __aeabi_memclr4                
+000039b5  __aeabi_memclr8                
+0000380d  __aeabi_memcpy                 
+0000380d  __aeabi_memcpy4                
+0000380d  __aeabi_memcpy8                
+000039b7  __aeabi_memset                 
+000039b7  __aeabi_memset4                
+000039b7  __aeabi_memset8                
+00002731  __aeabi_uldivmod               
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+00004093  __mpu_init                     
+20000000  __stack                        
+00004349  _args_main                     
+00003f09  _c_int00                       
+00007ceb  _ctypes_                       
+20000460  _lock                          
+000043b3  _nop                           
+000043ab  _register_lock                 
+000043a5  _register_unlock               
+0000419b  _system_post_cinit             
+0000446d  _system_pre_init               
+20000464  _unlock                        
+00003f61  abort                          
+00003fb1  atoi                           
+ffffffff  binit                          
+00003ffd  copy_in                        
+000043b9  copysign                       
+000043b9  copysignl                      
+20000468  errno                          
+00003f69  exit                           
+00003d95  frexp                          
+00003d95  frexpl                         
+00000000  g_pfnVectors                   
+0000810c  g_psDefaultCodePointMapTable   
+20000400  g_sContext                     
+00007ebc  g_sFontCmss18b                 
+000080e4  g_sKentec320x240x16_SSD2119    
+20000450  g_ui32Flags                    
+000034f1  ldexp                          
+000034f1  ldexpl                         
+00003eb3  ltoa                           
+00003029  main                           
+2000046c  main_func_sp                   
+0000432b  memccpy                        
+0000380d  memcpy                         
+000039bd  memset                         
+000034f1  scalbn                         
+000034f1  scalbnl                        
+00003df9  sprintf                        
+0000438d  strchr                         
+000043cd  strlen                         
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00000000  __TI_static_base__             
+00000000  g_pfnVectors                   
+00000400  __STACK_SIZE                   
+00000a41  __TI_printfi                   
+0000133d  PinoutSet                      
+000017f5  Kentec320x240x16_SSD2119Init   
+000022e5  GrFontGlyphRender              
+00002539  FrameDraw                      
+00002731  __aeabi_uldivmod               
+00002925  SysCtlClockFreqSet             
+00002cdd  __aeabi_dsub                   
+00002ce7  __aeabi_dadd                   
+00003029  main                           
+0000318d  __aeabi_ddiv                   
+000032c3  GPIOPadConfigSet               
+000033f5  __aeabi_dmul                   
+000034f1  ldexp                          
+000034f1  ldexpl                         
+000034f1  scalbn                         
+000034f1  scalbnl                        
+000035ed  GrDefaultStringRenderer        
+0000380d  __aeabi_memcpy                 
+0000380d  __aeabi_memcpy4                
+0000380d  __aeabi_memcpy8                
+0000380d  memcpy                         
+000038a9  __aeabi_cdcmpeq                
+000038a9  __aeabi_cdcmple                
+0000392f  __aeabi_cdrcmple               
+000039b5  __aeabi_memclr                 
+000039b5  __aeabi_memclr4                
+000039b5  __aeabi_memclr8                
+000039b7  __aeabi_memset                 
+000039b7  __aeabi_memset4                
+000039b7  __aeabi_memset8                
+000039bd  memset                         
+00003aa9  Timer1IntHandler               
+00003b19  __TI_auto_init                 
+00003b89  Timer0IntHandler               
+00003bf5  GrContextInit                  
+00003c5d  GrStringWidthGet               
+00003cc5  __TI_decompress_lzss           
+00003d2d  GrContextClipRegionSet         
+00003d95  frexp                          
+00003d95  frexpl                         
+00003df9  sprintf                        
+00003eb3  ltoa                           
+00003f09  _c_int00                       
+00003f5d  C$$EXIT                        
+00003f61  abort                          
+00003f69  exit                           
+00003fb1  atoi                           
+00003ffd  copy_in                        
+00004093  __mpu_init                     
+000040dd  __aeabi_d2iz                   
+00004125  LCDIDDTimingSet                
+0000419b  _system_post_cinit             
+0000419d  SysCtlPeripheralEnable         
+000041d1  GrStringNextCharGet            
+000041ff  __aeabi_i2d                    
+0000422d  GrFontBaselineGet              
+00004259  GPIODirModeSet                 
+00004283  GrFontInfoGet                  
+000042a9  GrFontGlyphDataGet             
+000042cb  LCDModeSet                     
+0000430d  GrFontCodepageGet              
+0000432b  memccpy                        
+00004349  _args_main                     
+00004361  GrStringDraw                   
+0000438d  strchr                         
+000043a5  _register_unlock               
+000043ab  _register_lock                 
+000043b3  _nop                           
+000043b9  copysign                       
+000043b9  copysignl                      
+000043cd  strlen                         
+000043e1  GPIOPinTypeEthernetLED         
+000043f3  GPIOPinTypeLCD                 
+00004405  GrImageDraw                    
+00004413  __TI_decompress_none           
+00004421  LCDIDDCommandWrite             
+0000442d  LCDIDDDataWrite                
+00004439  __TI_zero_init                 
+00004445  GrMapISO8859_1_Unicode         
+0000444d  GPIOPinWrite                   
+00004453  GrContextFontSet               
+00004459  ResetISR                       
+0000445f  SysCtlDelay                    
+00004465  LCDDMAConfigSet                
+00004469  LCDIDDConfigSet                
+0000446d  _system_pre_init               
+00007ceb  _ctypes_                       
+00007ebc  g_sFontCmss18b                 
+000080e4  g_sKentec320x240x16_SSD2119    
+0000810c  g_psDefaultCodePointMapTable   
+0000813c  __TI_Handler_Table_Base        
+00008148  __TI_Handler_Table_Limit       
+00008150  __TI_CINIT_Base                
+00008160  __TI_CINIT_Limit               
+20000000  __stack                        
+20000400  __STACK_END                    
+20000400  __STACK_TOP                    
+20000400  g_sContext                     
+20000450  g_ui32Flags                    
+20000454  __TI_cleanup_ptr               
+20000458  __TI_dtors_ptr                 
+2000045c  __TI_enable_exit_profile_output
+20000460  _lock                          
+20000464  _unlock                        
+20000468  errno                          
+2000046c  main_func_sp                   
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
+
+[118 symbols]

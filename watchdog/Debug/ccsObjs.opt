@@ -1,0 +1,1 @@
+"./startup_ccs.obj" "./watchdog.obj" "./drivers/frame.obj" "./drivers/kentec320x240x16_ssd2119.obj" "./drivers/pinout.obj" "./drivers/touch.obj" "./utils/ustdlib.obj" "../watchdog_ccs.cmd" -llibc.a -l"H:/cc_workspace/TivaWare_C_Series-2.1.3.156/driverlib/ccs/Debug/driverlib.lib" -l"H:/cc_workspace/TivaWare_C_Series-2.1.3.156/grlib/ccs/Debug/grlib.lib" 
