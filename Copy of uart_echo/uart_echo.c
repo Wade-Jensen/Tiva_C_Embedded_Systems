@@ -23,7 +23,6 @@
 //
 //*****************************************************************************
 
-#include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include "inc/hw_ints.h"
@@ -40,8 +39,6 @@
 #include "drivers/kentec320x240x16_ssd2119.h"
 #include "drivers/frame.h"
 #include "drivers/pinout.h"
-
-tContext sContext;
 
 //*****************************************************************************
 //
@@ -69,28 +66,6 @@ __error__(char *pcFilename, uint32_t ui32Line)
 
 //*****************************************************************************
 //
-// Send a string to the UART.
-//
-//*****************************************************************************
-void
-UARTSend(const uint8_t *pui8Buffer, uint32_t ui32Count)
-{
-    //
-    // Loop while there are more characters to send.
-    //
-    while(ui32Count--)
-    {
-        //
-        // Write the next character to the UART.
-        //
-        //UARTCharPutNonBlocking(UART0_BASE, *pui8Buffer++);
-        UARTCharPut(UART0_BASE, *pui8Buffer++);
-    }
-}
-
-
-//*****************************************************************************
-//
 // The UART interrupt handler.
 //
 //*****************************************************************************
@@ -112,46 +87,35 @@ UARTIntHandler(void)
     //
     // Loop while there are characters in the receive FIFO.
     //
-
-    static char buff[100];
-    static uint32_t i = 0;
-    char str[100];
-
     while(UARTCharsAvail(UART0_BASE))
     {
         //
         // Read the next character from the UART and write it back to the UART.
         //
-        buff[i] = UARTCharGetNonBlocking(UART0_BASE);
-
-        if (buff[i]=='\r') {
-            uint8_t digits = 0;
-            if (i<9) {
-                digits = 1;
-            }
-            else if (i < 99) {
-                digits = 2;
-            }
-            else if (i<999) {
-                digits = 3;
-            }
-
-            sprintf ( str, "\n%d characters received and displayed", i-1);
-            UARTSend( (uint8_t *) str, 35+digits );
-            UARTSend((uint8_t *)"Enter text: ", 12);
-            //int j;
-            //for (j=0; j<i; j++) {
-            //    UARTCharPutNonBlocking(UART0_BASE, buff[j]);
-            //}
-
-            i = 0;
-            GrStringDraw(&sContext, (const char*) buff, -1, 150, 195, 0);
-        }
-        i++;
-        //
+        UARTCharPutNonBlocking(UART0_BASE,
+                                   UARTCharGetNonBlocking(UART0_BASE));
     }
 }
 
+//*****************************************************************************
+//
+// Send a string to the UART.
+//
+//*****************************************************************************
+void
+UARTSend(const uint8_t *pui8Buffer, uint32_t ui32Count)
+{
+    //
+    // Loop while there are more characters to send.
+    //
+    while(ui32Count--)
+    {
+        //
+        // Write the next character to the UART.
+        //
+        UARTCharPutNonBlocking(UART0_BASE, *pui8Buffer++);
+    }
+}
 
 //*****************************************************************************
 //
@@ -162,6 +126,7 @@ int
 main(void)
 {
     uint32_t ui32SysClock;
+    tContext sContext;
 
     //
     // Run from the PLL at 120 MHz.
