@@ -123,8 +123,8 @@ UARTIntHandler(void)
         // Read the next character from the UART and write it back to the UART.
         //
         buff[i] = UARTCharGetNonBlocking(UART0_BASE);
-
-        if (buff[i]=='\r') {
+        i++;
+        if (buff[i-1]=='\r') {
             uint8_t digits = 0;
             if (i<9) {
                 digits = 1;
@@ -136,18 +136,18 @@ UARTIntHandler(void)
                 digits = 3;
             }
 
-            sprintf ( str, "\n%d characters received and displayed", i-1);
-            UARTSend( (uint8_t *) str, 35+digits );
+            sprintf ( str, "\n%d characters received and displayed\n\r", i-1);
+            UARTSend( (uint8_t *) str, 37+digits );
             UARTSend((uint8_t *)"Enter text: ", 12);
             //int j;
             //for (j=0; j<i; j++) {
             //    UARTCharPutNonBlocking(UART0_BASE, buff[j]);
             //}
 
+            GrStringDraw(&sContext, (const char*) buff, i-1, 10, 195, 1);
             i = 0;
-            GrStringDraw(&sContext, (const char*) buff, -1, 150, 195, 0);
         }
-        i++;
+
         //
     }
 }
