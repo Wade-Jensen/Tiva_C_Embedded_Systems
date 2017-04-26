@@ -4,5 +4,5 @@
 
 USER_OBJS :=
 
-LIBS := -llibc.a -l"H:/ti_workspace/TivaWare_C_Series-2.1.3.156/driverlib/ccs/Debug/driverlib.lib"
+LIBS := -llibc.a -l"C:/Users/WadeJensen/Dropbox/01_EN40/driverlib/ccs/Debug/driverlib.lib"
 

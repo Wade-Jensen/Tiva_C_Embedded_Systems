@@ -1,0 +1,827 @@
+******************************************************************************
+                  TI ARM Linker PC v16.9.0                     
+******************************************************************************
+>> Linked Wed Mar 29 17:50:53 2017
+
+OUTPUT FILE NAME:   <hibernate.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00003d85
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00100000  0000618c  000f9e74  R  X
+  SRAM                  20000000   00040000  0000128b  0003ed75  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00006190   00006190    r-x
+  00000000    00000000    00000200   00000200    r-- .intvecs
+  00000200    00000200    00004624   00004624    r-x .text
+  00004824    00004824    00001690   00001690    r-- .const
+  00005eb8    00005eb8    000002d8   000002d8    r-- .cinit
+20000000    20000000    0000128b   00000000    rw-
+  20000000    20000000    0000026c   00000000    rw- .vtable
+  2000026c    2000026c    00000954   00000000    rw- .data
+  20000bc0    20000bc0    00000400   00000000    rw- .stack
+  20000fc0    20000fc0    000002cb   00000000    rw- .bss
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000200     
+                  00000000    00000200     startup_ccs.obj (.intvecs)
+
+.text      0    00000200    00004624     
+                  00000200    000004e4     hibernate.obj (.text:main)
+                  000006e4    00000484     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119Init)
+                  00000b68    0000046c     pinout.obj (.text:PinoutSet)
+                  00000fd4    00000374     grlib.lib : image.obj (.text:InternalImageDraw)
+                  00001348    000002f8               : image.obj (.text:PixelTransparentDraw)
+                  00001640    00000254               : string.obj (.text:GrFontGlyphRender)
+                  00001894    00000208               : circle.obj (.text:GrCircleDraw)
+                  00001a9c    000001ec     driverlib.lib : sysctl.obj (.text:SysCtlClockFreqSet)
+                  00001c88    000001cc     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119PixelDrawMultiple)
+                  00001e54    00000194     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119RectFill)
+                  00001fe8    00000190     grlib.lib : canvas.obj (.text:CanvasPaint)
+                  00002178    00000180     touch.obj (.text:TouchScreenDebouncer)
+                  000022f8    0000017e     grlib.lib : pushbutton.obj (.text:RectangularButtonPaint)
+                  00002476    0000016e               : pushbutton.obj (.text:CircularButtonPaint)
+                  000025e4    00000144               : circle.obj (.text:GrCircleFill)
+                  00002728    00000140     touch.obj (.text:TouchScreenIntHandler)
+                  00002868    00000132     driverlib.lib : gpio.obj (.text:GPIOPadConfigSet)
+                  0000299a    000000f2     grlib.lib : pushbutton.obj (.text:RectangularButtonClick)
+                  00002a8c    000000e8               : widget.obj (.text:WidgetMessageQueueAdd)
+                  00002b74    000000d4               : pushbutton.obj (.text:CircularButtonClick)
+                  00002c48    000000c4     hibernate.obj (.text:DateTimeUpdateGet)
+                  00002d0c    000000c4     driverlib.lib : hibernate.obj (.text:_HibernateCalendarSet)
+                  00002dd0    000000c0     grlib.lib : string.obj (.text:GrDefaultStringRenderer)
+                  00002e90    000000b4               : widget.obj (.text:WidgetMessageSendPostOrder)
+                  00002f44    000000b0     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119LineDrawH)
+                  00002ff4    000000b0     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119LineDrawV)
+                  000030a4    0000009c     hibernate.obj (.text:DateTimeDisplayGet)
+                  00003140    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  000031dc    0000008c     hibernate.obj (.text:OnYearDwnBtnPress)
+                  00003268    0000008c     hibernate.obj (.text:OnYearUpBtnPress)
+                  000032f4    00000088     hibernate.obj (.text:OnMonDwnBtnPress)
+                  0000337c    00000088     hibernate.obj (.text:OnMonUpBtnPress)
+                  00003404    00000086     grlib.lib : rectangle.obj (.text:GrRectFill)
+                  0000348a    00000002     startup_ccs.obj (.text:FaultISR)
+                  0000348c    00000083     hibernate.obj (.text:DateTimeGet)
+                  0000350f    00000001     --HOLE-- [fill = 0]
+                  00003510    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.obj (.text)
+                  0000358a    00000002     startup_ccs.obj (.text:IntDefaultHandler)
+                  0000358c    00000078     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119PixelDraw)
+                  00003604    00000070     hibernate.obj (.text:GetCalendarMatchValue)
+                  00003674    00000070     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.obj (.text)
+                  000036e4    0000006c     hibernate.obj (.text:DateTimeSet)
+                  00003750    0000006c     hibernate.obj (.text:Timer0IntHandler)
+                  000037bc    00000068     grlib.lib : context.obj (.text:GrContextInit)
+                  00003824    00000068               : string.obj (.text:GrStringWidthGet)
+                  0000388c    00000068     driverlib.lib : hibernate.obj (.text:HibernateCalendarGet)
+                  000038f4    00000068                   : interrupt.obj (.text:IntEnable)
+                  0000395c    00000068     hibernate.obj (.text:OnDateTimeSetBtnPress)
+                  000039c4    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.obj (.text:decompress:lzss)
+                  00003a2c    00000066     grlib.lib : context.obj (.text:GrContextClipRegionSet)
+                  00003a92    00000066               : rectangle.obj (.text:GrRectDraw)
+                  00003af8    00000064     driverlib.lib : hibernate.obj (.text:HibernateWakeSet)
+                  00003b5c    00000064     grlib.lib : widget.obj (.text:WidgetMessageQueueProcess)
+                  00003bc0    00000060     driverlib.lib : timer.obj (.text:TimerConfigure)
+                  00003c20    0000005e     grlib.lib : widget.obj (.text:WidgetMessageSendPreOrder)
+                  00003c7e    0000005a               : string.obj (.text:FontWideGlyphDataGet)
+                  00003cd8    00000058     hibernate.obj (.text:OnDayDwnBtnPress)
+                  00003d30    00000054     hibernate.obj (.text:OnDayUpBtnPress)
+                  00003d84    00000054     rtsv7M4_T_le_v4SPD16_eabi.lib : boot.obj (.text)
+                  00003dd8    00000054                                   : exit.obj (.text)
+                  00003e2c    0000004c     grlib.lib : widget.obj (.text:WidgetRemove)
+                  00003e78    0000004c     driverlib.lib : timer.obj (.text:_TimerIntNumberGet)
+                  00003ec4    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
+                  00003f10    0000004a     grlib.lib : string.obj (.text:UpdateContextCharMapping)
+                  00003f5a    00000002     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119Flush)
+                  00003f5c    00000048     driverlib.lib : hibernate.obj (.text:HibernateClockConfig)
+                  00003fa4    00000048                   : sysctl.obj (.text:_SysCtlFrequencyGet)
+                  00003fec    00000048     hibernate.obj (.text:runTimer0AsPeriodic)
+                  00004034    00000046     grlib.lib : line.obj (.text:GrLineDrawH)
+                  0000407a    00000046               : line.obj (.text:GrLineDrawV)
+                  000040c0    00000040     hibernate.obj (.text:OnAMPMBtnPress)
+                  00004100    00000040     hibernate.obj (.text:OnMinDwnBtnPress)
+                  00004140    00000040     hibernate.obj (.text:OnMinUpBtnPress)
+                  00004180    0000003c     driverlib.lib : lcd.obj (.text:LCDIDDTimingSet)
+                  000041bc    0000003c     hibernate.obj (.text:OnHourDwnBtnPress)
+                  000041f8    0000003c     hibernate.obj (.text:OnHourUpBtnPress)
+                  00004234    0000003c     hibernate.obj (.text:OnTimeDoneBtnPress)
+                  00004270    0000003a     grlib.lib : string.obj (.text:FontGlyphDataGet)
+                  000042aa    00000002     startup_ccs.obj (.text:NmiSR)
+                  000042ac    00000034     driverlib.lib : interrupt.obj (.text:IntRegister)
+                  000042e0    00000034                   : sysctl.obj (.text:SysCtlPeripheralEnable)
+                  00004314    00000030     hibernate.obj (.text:OnDateNextBtnPress)
+                  00004344    0000002e     grlib.lib : string.obj (.text:GrStringNextCharGet)
+                  00004372    0000002c               : pushbutton.obj (.text:CircularButtonMsgProc)
+                  0000439e    0000002c               : string.obj (.text:GrFontBaselineGet)
+                  000043ca    0000002c               : string.obj (.text:GrFontHeightGet)
+                  000043f6    0000002c               : pushbutton.obj (.text:RectangularButtonMsgProc)
+                  00004422    0000002c               : widget.obj (.text:WidgetIsInTree)
+                  0000444e    0000002a     driverlib.lib : gpio.obj (.text:GPIODirModeSet)
+                  00004478    00000028     hibernate.obj (.text:GetDaysInMonth)
+                  000044a0    00000028     driverlib.lib : hibernate.obj (.text:HibernateDataSet)
+                  000044c8    00000026     grlib.lib : string.obj (.text:GrFontInfoGet)
+                  000044ee    00000002     rtsv7M4_T_le_v4SPD16_eabi.lib : mpu_init.obj (.text)
+                  000044f0    00000024     driverlib.lib : hibernate.obj (.text:HibernateDataGet)
+                  00004514    00000022     grlib.lib : string.obj (.text:GrFontGlyphDataGet)
+                  00004536    00000022     driverlib.lib : lcd.obj (.text:LCDModeSet)
+                  00004558    00000020                   : sysctl.obj (.text:_SysCtlMemTimingGet)
+                  00004578    0000001e     grlib.lib : string.obj (.text:GrFontCodepageGet)
+                  00004596    0000001e               : widget.obj (.text:WidgetAdd)
+                  000045b4    00000018     driverlib.lib : gpio.obj (.text:GPIOPinTypeGPIOOutput)
+                  000045cc    00000018                   : hibernate.obj (.text:HibernateIntStatus)
+                  000045e4    00000018                   : timer.obj (.text:TimerIntRegister)
+                  000045fc    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  00004614    00000018                                   : strcmp.obj (.text)
+                  0000462c    00000016     grlib.lib : string.obj (.text:GrStringDraw)
+                  00004642    00000016     kentec320x240x16_ssd2119.obj (.text:Kentec320x240x16_SSD2119ColorTranslate)
+                  00004658    00000014     grlib.lib : canvas.obj (.text:CanvasMsgProc)
+                  0000466c    00000014     driverlib.lib : hibernate.obj (.text:HibernateEnableExpClk)
+                  00004680    00000014                   : hibernate.obj (.text:HibernateIntClear)
+                  00004694    00000014                   : hibernate.obj (.text:HibernateRTCEnable)
+                  000046a8    00000014                   : hibernate.obj (.text:HibernateRequest)
+                  000046bc    00000014     grlib.lib : widget.obj (.text:WidgetMutexGet)
+                  000046d0    00000014     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.text)
+                  000046e4    00000014                                   : strcpy.obj (.text)
+                  000046f8    00000012     driverlib.lib : gpio.obj (.text:GPIOPinTypeLCD)
+                  0000470a    00000012                   : timer.obj (.text:TimerLoadSet)
+                  0000471c    00000010                   : hibernate.obj (.text:HibernateCalendarSet)
+                  0000472c    00000010                   : hibernate.obj (.text:HibernateIsActive)
+                  0000473c    00000010                   : interrupt.obj (.text:IntMasterEnable)
+                  0000474c    00000010                   : hibernate.obj (.text:_HibernateWriteComplete)
+                  0000475c    0000000e     grlib.lib : image.obj (.text:GrImageDraw)
+                  0000476a    0000000e     driverlib.lib : timer.obj (.text:TimerEnable)
+                  00004778    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
+                  00004786    0000000c     driverlib.lib : cpu.obj (.text:CPUcpsie)
+                  00004792    00000002     rtsv7M4_T_le_v4SPD16_eabi.lib : startup.obj (.text)
+                  00004794    0000000c     driverlib.lib : hibernate.obj (.text:HibernateCalendarMatchSet)
+                  000047a0    0000000c                   : hibernate.obj (.text:HibernateCounterMode)
+                  000047ac    0000000c                   : lcd.obj (.text:LCDIDDCommandWrite)
+                  000047b8    0000000c                   : lcd.obj (.text:LCDIDDDataWrite)
+                  000047c4    0000000c     hibernate.obj (.text:OnInfoStrBtnPress)
+                  000047d0    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.obj (.text:decompress:ZI)
+                  000047dc    00000008     grlib.lib : charmap.obj (.text:GrMapISO8859_1_Unicode)
+                  000047e4    00000008     driverlib.lib : timer.obj (.text:TimerIntEnable)
+                  000047ec    00000006                   : gpio.obj (.text:GPIOPinRead)
+                  000047f2    00000006                   : gpio.obj (.text:GPIOPinWrite)
+                  000047f8    00000006     grlib.lib : string.obj (.text:GrContextFontSet)
+                  000047fe    00000006     startup_ccs.obj (.text:ResetISR)
+                  00004804    00000006     driverlib.lib : sysctl.obj (.text:SysCtlDelay)
+                  0000480a    00000006     grlib.lib : widget.obj (.text:WidgetMutexPut)
+                  00004810    00000004     driverlib.lib : lcd.obj (.text:LCDDMAConfigSet)
+                  00004814    00000004                   : lcd.obj (.text:LCDIDDConfigSet)
+                  00004818    00000004                   : timer.obj (.text:TimerIntClear)
+                  0000481c    00000004     grlib.lib : widget.obj (.text:WidgetDefaultMsgProc)
+                  00004820    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.obj (.text)
+
+.const     0    00004824    00001690     
+                  00004824    0000095e     grlib.lib : fontcm20.obj (.const:.string:g_pui8Cm20Data)
+                  00005182    00000759               : fontcm16.obj (.const:.string:g_pui8Cm16Data)
+                  000058db    00000001     --HOLE-- [fill = 0]
+                  000058dc    000001b0     driverlib.lib : sysctl.obj (.const:g_pppui32XTALtoVCO)
+                  00005a8c    000000c8     grlib.lib : fontcm16.obj (.const:g_sFontCm16)
+                  00005b54    000000c8               : fontcm20.obj (.const:g_sFontCm20)
+                  00005c1c    0000008e     hibernate.obj (.const:.string)
+                  00005caa    00000002     --HOLE-- [fill = 0]
+                  00005cac    00000070     driverlib.lib : interrupt.obj (.const)
+                  00005d1c    0000006c                   : sysctl.obj (.const:g_pui32Xtals)
+                  00005d88    00000060                   : timer.obj (.const:g_ppui32TimerIntMap)
+                  00005de8    00000040                   : timer.obj (.const:g_ppui32TimerIntMapSnowflake)
+                  00005e28    00000030                   : sysctl.obj (.const:g_sXTALtoMEMTIM)
+                  00005e58    00000028     kentec320x240x16_ssd2119.obj (.const:g_sKentec320x240x16_SSD2119)
+                  00005e80    0000001c     touch.obj (.const:g_pi32TouchParameters)
+                  00005e9c    00000010     grlib.lib : context.obj (.const)
+                  00005eac    00000008     driverlib.lib : sysctl.obj (.const)
+
+.cinit     0    00005eb8    000002d8     
+                  00005eb8    0000029d     (.cinit..data.load) [load image, compression = lzss]
+                  00006155    00000003     --HOLE-- [fill = 0]
+                  00006158    0000000c     (__TI_handler_table)
+                  00006164    00000004     --HOLE-- [fill = 0]
+                  00006168    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00006170    00000008     (.cinit..vtable.load) [load image, compression = zero_init]
+                  00006178    00000018     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.vtable    0    20000000    0000026c     UNINITIALIZED
+                  20000000    0000026c     driverlib.lib : interrupt.obj (.vtable)
+
+.data      0    2000026c    00000954     UNINITIALIZED
+                  2000026c    00000050     hibernate.obj (.data:g_sAMPMDwnBtn)
+                  200002bc    00000050     hibernate.obj (.data:g_sAMPMUpBtn)
+                  2000030c    00000050     hibernate.obj (.data:g_sDateNextBtn)
+                  2000035c    00000050     hibernate.obj (.data:g_sDateTimeSetBtn)
+                  200003ac    00000050     hibernate.obj (.data:g_sDayDwnBtn)
+                  200003fc    00000050     hibernate.obj (.data:g_sDayUpBtn)
+                  2000044c    00000050     hibernate.obj (.data:g_sHourDwnBtn)
+                  2000049c    00000050     hibernate.obj (.data:g_sHourUpBtn)
+                  200004ec    00000050     hibernate.obj (.data:g_sInfoStrBtn)
+                  2000053c    00000050     hibernate.obj (.data:g_sMinDwnBtn)
+                  2000058c    00000050     hibernate.obj (.data:g_sMinUpBtn)
+                  200005dc    00000050     hibernate.obj (.data:g_sMonDwnBtn)
+                  2000062c    00000050     hibernate.obj (.data:g_sMonUpBtn)
+                  2000067c    00000050     hibernate.obj (.data:g_sTimeDoneBtn)
+                  200006cc    00000050     hibernate.obj (.data:g_sYearDwnBtn)
+                  2000071c    00000050     hibernate.obj (.data:g_sYearUpBtn)
+                  2000076c    00000040     hibernate.obj (.data:g_sAMPMText)
+                  200007ac    00000040     hibernate.obj (.data:g_sDateScreen)
+                  200007ec    00000040     hibernate.obj (.data:g_sDateTime)
+                  2000082c    00000040     hibernate.obj (.data:g_sDayText)
+                  2000086c    00000040     hibernate.obj (.data:g_sHibCount)
+                  200008ac    00000040     hibernate.obj (.data:g_sHourText)
+                  200008ec    00000040     hibernate.obj (.data:g_sInfoStr1)
+                  2000092c    00000040     hibernate.obj (.data:g_sInfoStr2)
+                  2000096c    00000040     hibernate.obj (.data:g_sInfoStr3)
+                  200009ac    00000040     hibernate.obj (.data:g_sMainScreen)
+                  200009ec    00000040     hibernate.obj (.data:g_sMinText)
+                  20000a2c    00000040     hibernate.obj (.data:g_sMonText)
+                  20000a6c    00000040     hibernate.obj (.data:g_sTimeScreen)
+                  20000aac    00000040     hibernate.obj (.data:g_sWakeInfo)
+                  20000aec    00000040     hibernate.obj (.data:g_sYearText)
+                  20000b2c    00000030     hibernate.obj (.data:g_ppcMonth)
+                  20000b5c    0000002d     grlib.lib : widget.obj (.data)
+                  20000b89    00000003     --HOLE--
+                  20000b8c    00000014     hibernate.obj (.data:g_ppcWakeSource)
+                  20000ba0    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.data:$O1$$)
+                  20000bac    00000008                                   : _lock.obj (.data:$O1$$)
+                  20000bb4    00000004     hibernate.obj (.data)
+                  20000bb8    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : stkdepth_vars.obj (.data)
+                  20000bbc    00000004     touch.obj (.data)
+
+.stack     0    20000bc0    00000400     UNINITIALIZED
+                  20000bc0    00000400     --HOLE--
+
+.bss       0    20000fc0    000002cb     UNINITIALIZED
+                  20000fc0    00000140     grlib.lib : widget.obj (.bss:g_psMQ)
+                  20001100    00000028     (.common:g_pcDateTimeBuf)
+                  20001128    00000028     (.common:g_pcHibBuf)
+                  20001150    00000028     (.common:g_pcInfoBuf0)
+                  20001178    00000028     (.common:g_pcInfoBuf1)
+                  200011a0    00000028     (.common:g_pcInfoBuf2)
+                  200011c8    00000028     (.common:g_pcInfoBuf3)
+                  200011f0    00000028     (.common:g_pcWakeBuf)
+                  20001218    00000020     (.common:g_pui8Dictionary)
+                  20001238    00000010     touch.obj (.bss:g_pi16Samples)
+                  20001248    00000008     touch.obj (.bss)
+                  20001250    00000008     (.common:g_pcYearBuf)
+                  20001258    00000004     (.common:g_pcAMPMBuf)
+                  2000125c    00000004     (.common:g_pcDayBuf)
+                  20001260    00000004     (.common:g_pcHourBuf)
+                  20001264    00000004     (.common:g_pcMinBuf)
+                  20001268    00000004     (.common:g_pcMonBuf)
+                  2000126c    00000004     (.common:g_psGrLibDefaults)
+                  20001270    00000004     (.common:g_ui32DayIdx)
+                  20001274    00000004     (.common:g_ui32HourIdx)
+                  20001278    00000004     (.common:g_ui32MinIdx)
+                  2000127c    00000004     (.common:g_ui32MonthIdx)
+                  20001280    00000004     (.common:g_ui32YearIdx)
+                  20001284    00000002     (.common:g_i16TouchX)
+                  20001286    00000002     (.common:g_i16TouchY)
+                  20001288    00000001     (.common:g_bHibernate)
+                  20001289    00000001     (.common:g_bMainScreen)
+                  2000128a    00000001     (.common:g_bSetDate)
+
+MODULE SUMMARY
+
+       Module                         code    ro data   rw data
+       ------                         ----    -------   -------
+    .\
+       hibernate.obj                  3435    142       2643   
+       startup_ccs.obj                12      512       0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         3447    654       2643   
+                                                               
+    .\drivers\
+       kentec320x240x16_ssd2119.obj   2516    40        0      
+       pinout.obj                     1132    0         0      
+       touch.obj                      704     28        32     
+    +--+------------------------------+-------+---------+---------+
+       Total:                         4352    68        32     
+                                                               
+    C:/Users/WadeJensen/Dropbox/01_EN40/YEAR_4_SEM_1/EGH456/Repos/code_composer/TivaWare_C_Series-2.1.3.156/driverlib/ccs/Debug/driverlib.lib
+       sysctl.obj                     654     596       0      
+       interrupt.obj                  172     112       620    
+       hibernate.obj                  724     0         0      
+       gpio.obj                       402     0         0      
+       timer.obj                      240     160       0      
+       lcd.obj                        126     0         0      
+       cpu.obj                        12      0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         2330    868       620    
+                                                               
+    C:/Users/WadeJensen/Dropbox/01_EN40/YEAR_4_SEM_1/EGH456/Repos/code_composer/TivaWare_C_Series-2.1.3.156/grlib/ccs/Debug/grlib.lib
+       fontcm20.obj                   0       2598      0      
+       fontcm16.obj                   0       2081      0      
+       image.obj                      1658    0         32     
+       string.obj                     1378    0         0      
+       pushbutton.obj                 1290    0         0      
+       widget.obj                     786     0         365    
+       circle.obj                     844     0         0      
+       canvas.obj                     420     0         0      
+       rectangle.obj                  236     0         0      
+       context.obj                    206     16        4      
+       line.obj                       140     0         0      
+       charmap.obj                    8       0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         6966    4695      401    
+                                                               
+    C:\ti\ccsv7\tools\compiler\ti-cgt-arm_16.9.0.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.obj                  156     0         0      
+       memset_t2.obj                  122     0         0      
+       autoinit.obj                   112     0         0      
+       copy_decompress_lzss.obj       104     0         0      
+       exit.obj                       84      0         12     
+       boot.obj                       84      0         0      
+       cpy_tbl.obj                    76      0         0      
+       _lock.obj                      20      0         8      
+       args_main.obj                  24      0         0      
+       strcmp.obj                     24      0         0      
+       strcpy.obj                     20      0         0      
+       copy_decompress_none.obj       14      0         0      
+       copy_zero_init.obj             12      0         0      
+       pre_init.obj                   4       0         0      
+       stkdepth_vars.obj              0       0         4      
+       mpu_init.obj                   2       0         0      
+       startup.obj                    2       0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         860     0         24     
+                                                               
+       Stack:                         0       0         1024   
+       Linker Generated:              0       721       0      
+    +--+------------------------------+-------+---------+---------+
+       Grand Total:                   17955   7006      4744   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00006178 records: 3, size/record: 8, table size: 24
+	.data: load addr=00005eb8, load size=0000029d bytes, run addr=2000026c, run size=00000954 bytes, compression=lzss
+	.bss: load addr=00006168, load size=00000008 bytes, run addr=20000fc0, run size=000002cb bytes, compression=zero_init
+	.vtable: load addr=00006170, load size=00000008 bytes, run addr=20000000, run size=0000026c bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00006158 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_zero_init
+	index: 1, handler: __TI_decompress_lzss
+	index: 2, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+00003dd9  C$$EXIT                        
+00004787  CPUcpsie                       
+00004659  CanvasMsgProc                  
+00004373  CircularButtonMsgProc          
+000030a5  DateTimeDisplayGet             
+0000348d  DateTimeGet                    
+000036e5  DateTimeSet                    
+00002c49  DateTimeUpdateGet              
+0000444f  GPIODirModeSet                 
+00002869  GPIOPadConfigSet               
+000047ed  GPIOPinRead                    
+000045b5  GPIOPinTypeGPIOOutput          
+000046f9  GPIOPinTypeLCD                 
+000047f3  GPIOPinWrite                   
+00003605  GetCalendarMatchValue          
+00004479  GetDaysInMonth                 
+00001895  GrCircleDraw                   
+000025e5  GrCircleFill                   
+00003a2d  GrContextClipRegionSet         
+000047f9  GrContextFontSet               
+000037bd  GrContextInit                  
+00002dd1  GrDefaultStringRenderer        
+0000439f  GrFontBaselineGet              
+00004579  GrFontCodepageGet              
+00004515  GrFontGlyphDataGet             
+00001641  GrFontGlyphRender              
+000043cb  GrFontHeightGet                
+000044c9  GrFontInfoGet                  
+0000475d  GrImageDraw                    
+00004035  GrLineDrawH                    
+0000407b  GrLineDrawV                    
+000047dd  GrMapISO8859_1_Unicode         
+00003a93  GrRectDraw                     
+00003405  GrRectFill                     
+0000462d  GrStringDraw                   
+00004345  GrStringNextCharGet            
+00003825  GrStringWidthGet               
+0000388d  HibernateCalendarGet           
+00004795  HibernateCalendarMatchSet      
+0000471d  HibernateCalendarSet           
+00003f5d  HibernateClockConfig           
+000047a1  HibernateCounterMode           
+000044f1  HibernateDataGet               
+000044a1  HibernateDataSet               
+0000466d  HibernateEnableExpClk          
+00004681  HibernateIntClear              
+000045cd  HibernateIntStatus             
+0000472d  HibernateIsActive              
+00004695  HibernateRTCEnable             
+000046a9  HibernateRequest               
+00003af9  HibernateWakeSet               
+000038f5  IntEnable                      
+0000473d  IntMasterEnable                
+000042ad  IntRegister                    
+000006e5  Kentec320x240x16_SSD2119Init   
+00004811  LCDDMAConfigSet                
+000047ad  LCDIDDCommandWrite             
+00004815  LCDIDDConfigSet                
+000047b9  LCDIDDDataWrite                
+00004181  LCDIDDTimingSet                
+00004537  LCDModeSet                     
+000040c1  OnAMPMBtnPress                 
+00004315  OnDateNextBtnPress             
+0000395d  OnDateTimeSetBtnPress          
+00003cd9  OnDayDwnBtnPress               
+00003d31  OnDayUpBtnPress                
+000041bd  OnHourDwnBtnPress              
+000041f9  OnHourUpBtnPress               
+000047c5  OnInfoStrBtnPress              
+00004101  OnMinDwnBtnPress               
+00004141  OnMinUpBtnPress                
+000032f5  OnMonDwnBtnPress               
+0000337d  OnMonUpBtnPress                
+00004235  OnTimeDoneBtnPress             
+000031dd  OnYearDwnBtnPress              
+00003269  OnYearUpBtnPress               
+00000b69  PinoutSet                      
+000043f7  RectangularButtonMsgProc       
+000047ff  ResetISR                       
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
+00001a9d  SysCtlClockFreqSet             
+00004805  SysCtlDelay                    
+000042e1  SysCtlPeripheralEnable         
+00003751  Timer0IntHandler               
+00003bc1  TimerConfigure                 
+0000476b  TimerEnable                    
+00004819  TimerIntClear                  
+000047e5  TimerIntEnable                 
+000045e5  TimerIntRegister               
+0000470b  TimerLoadSet                   
+00002729  TouchScreenIntHandler          
+00004597  WidgetAdd                      
+0000481d  WidgetDefaultMsgProc           
+00002a8d  WidgetMessageQueueAdd          
+00003b5d  WidgetMessageQueueProcess      
+00002e91  WidgetMessageSendPostOrder     
+00003c21  WidgetMessageSendPreOrder      
+000046bd  WidgetMutexGet                 
+0000480b  WidgetMutexPut                 
+00003e2d  WidgetRemove                   
+20000fc0  __STACK_END                    
+00000400  __STACK_SIZE                   
+20000fc0  __STACK_TOP                    
+00006178  __TI_CINIT_Base                
+00006190  __TI_CINIT_Limit               
+00006158  __TI_Handler_Table_Base        
+00006164  __TI_Handler_Table_Limit       
+00003675  __TI_auto_init                 
+20000ba0  __TI_cleanup_ptr               
+000039c5  __TI_decompress_lzss           
+00004779  __TI_decompress_none           
+20000ba4  __TI_dtors_ptr                 
+20000ba8  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+00000000  __TI_static_base__             
+000047d1  __TI_zero_init                 
+00003511  __aeabi_memclr                 
+00003511  __aeabi_memclr4                
+00003511  __aeabi_memclr8                
+00003141  __aeabi_memcpy                 
+00003141  __aeabi_memcpy4                
+00003141  __aeabi_memcpy8                
+00003513  __aeabi_memset                 
+00003513  __aeabi_memset4                
+00003513  __aeabi_memset8                
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+000044ef  __mpu_init                     
+20000bc0  __stack                        
+000045fd  _args_main                     
+00003d85  _c_int00                       
+20000bac  _lock                          
+000046df  _nop                           
+000046d7  _register_lock                 
+000046d1  _register_unlock               
+00004793  _system_post_cinit             
+00004821  _system_pre_init               
+20000bb0  _unlock                        
+00003ddd  abort                          
+ffffffff  binit                          
+00003ec5  copy_in                        
+00003de5  exit                           
+20001288  g_bHibernate                   
+20001289  g_bMainScreen                  
+2000128a  g_bSetDate                     
+20000bbc  g_i16TouchMin                  
+20001284  g_i16TouchX                    
+20001286  g_i16TouchY                    
+20001258  g_pcAMPMBuf                    
+20001100  g_pcDateTimeBuf                
+2000125c  g_pcDayBuf                     
+20001128  g_pcHibBuf                     
+20001260  g_pcHourBuf                    
+20001150  g_pcInfoBuf0                   
+20001178  g_pcInfoBuf1                   
+200011a0  g_pcInfoBuf2                   
+200011c8  g_pcInfoBuf3                   
+20001264  g_pcMinBuf                     
+20001268  g_pcMonBuf                     
+200011f0  g_pcWakeBuf                    
+20001250  g_pcYearBuf                    
+20000000  g_pfnRAMVectors                
+00000000  g_pfnVectors                   
+00005e80  g_pi32TouchParameters          
+00005e9c  g_psDefaultCodePointMapTable   
+2000026c  g_sAMPMDwnBtn                  
+2000076c  g_sAMPMText                    
+200002bc  g_sAMPMUpBtn                   
+2000030c  g_sDateNextBtn                 
+200007ac  g_sDateScreen                  
+200007ec  g_sDateTime                    
+2000035c  g_sDateTimeSetBtn              
+200003ac  g_sDayDwnBtn                   
+2000082c  g_sDayText                     
+200003fc  g_sDayUpBtn                    
+00005a8c  g_sFontCm16                    
+00005b54  g_sFontCm20                    
+2000086c  g_sHibCount                    
+2000044c  g_sHourDwnBtn                  
+200008ac  g_sHourText                    
+2000049c  g_sHourUpBtn                   
+200008ec  g_sInfoStr1                    
+2000092c  g_sInfoStr2                    
+2000096c  g_sInfoStr3                    
+200004ec  g_sInfoStrBtn                  
+00005e58  g_sKentec320x240x16_SSD2119    
+200009ac  g_sMainScreen                  
+2000053c  g_sMinDwnBtn                   
+200009ec  g_sMinText                     
+2000058c  g_sMinUpBtn                    
+200005dc  g_sMonDwnBtn                   
+20000a2c  g_sMonText                     
+2000062c  g_sMonUpBtn                    
+20000b5c  g_sRoot                        
+2000067c  g_sTimeDoneBtn                 
+20000a6c  g_sTimeScreen                  
+20000aac  g_sWakeInfo                    
+200006cc  g_sYearDwnBtn                  
+20000aec  g_sYearText                    
+2000071c  g_sYearUpBtn                   
+20001270  g_ui32DayIdx                   
+20001274  g_ui32HourIdx                  
+20001278  g_ui32MinIdx                   
+2000127c  g_ui32MonthIdx                 
+20001280  g_ui32YearIdx                  
+00000201  main                           
+20000bb8  main_func_sp                   
+00003141  memcpy                         
+00003519  memset                         
+00003fed  runTimer0AsPeriodic            
+00004615  strcmp                         
+000046e5  strcpy                         
+UNDEFED   usnprintf                      
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00000000  __TI_static_base__             
+00000000  g_pfnVectors                   
+00000201  main                           
+00000400  __STACK_SIZE                   
+000006e5  Kentec320x240x16_SSD2119Init   
+00000b69  PinoutSet                      
+00001641  GrFontGlyphRender              
+00001895  GrCircleDraw                   
+00001a9d  SysCtlClockFreqSet             
+000025e5  GrCircleFill                   
+00002729  TouchScreenIntHandler          
+00002869  GPIOPadConfigSet               
+00002a8d  WidgetMessageQueueAdd          
+00002c49  DateTimeUpdateGet              
+00002dd1  GrDefaultStringRenderer        
+00002e91  WidgetMessageSendPostOrder     
+000030a5  DateTimeDisplayGet             
+00003141  __aeabi_memcpy                 
+00003141  __aeabi_memcpy4                
+00003141  __aeabi_memcpy8                
+00003141  memcpy                         
+000031dd  OnYearDwnBtnPress              
+00003269  OnYearUpBtnPress               
+000032f5  OnMonDwnBtnPress               
+0000337d  OnMonUpBtnPress                
+00003405  GrRectFill                     
+0000348d  DateTimeGet                    
+00003511  __aeabi_memclr                 
+00003511  __aeabi_memclr4                
+00003511  __aeabi_memclr8                
+00003513  __aeabi_memset                 
+00003513  __aeabi_memset4                
+00003513  __aeabi_memset8                
+00003519  memset                         
+00003605  GetCalendarMatchValue          
+00003675  __TI_auto_init                 
+000036e5  DateTimeSet                    
+00003751  Timer0IntHandler               
+000037bd  GrContextInit                  
+00003825  GrStringWidthGet               
+0000388d  HibernateCalendarGet           
+000038f5  IntEnable                      
+0000395d  OnDateTimeSetBtnPress          
+000039c5  __TI_decompress_lzss           
+00003a2d  GrContextClipRegionSet         
+00003a93  GrRectDraw                     
+00003af9  HibernateWakeSet               
+00003b5d  WidgetMessageQueueProcess      
+00003bc1  TimerConfigure                 
+00003c21  WidgetMessageSendPreOrder      
+00003cd9  OnDayDwnBtnPress               
+00003d31  OnDayUpBtnPress                
+00003d85  _c_int00                       
+00003dd9  C$$EXIT                        
+00003ddd  abort                          
+00003de5  exit                           
+00003e2d  WidgetRemove                   
+00003ec5  copy_in                        
+00003f5d  HibernateClockConfig           
+00003fed  runTimer0AsPeriodic            
+00004035  GrLineDrawH                    
+0000407b  GrLineDrawV                    
+000040c1  OnAMPMBtnPress                 
+00004101  OnMinDwnBtnPress               
+00004141  OnMinUpBtnPress                
+00004181  LCDIDDTimingSet                
+000041bd  OnHourDwnBtnPress              
+000041f9  OnHourUpBtnPress               
+00004235  OnTimeDoneBtnPress             
+000042ad  IntRegister                    
+000042e1  SysCtlPeripheralEnable         
+00004315  OnDateNextBtnPress             
+00004345  GrStringNextCharGet            
+00004373  CircularButtonMsgProc          
+0000439f  GrFontBaselineGet              
+000043cb  GrFontHeightGet                
+000043f7  RectangularButtonMsgProc       
+0000444f  GPIODirModeSet                 
+00004479  GetDaysInMonth                 
+000044a1  HibernateDataSet               
+000044c9  GrFontInfoGet                  
+000044ef  __mpu_init                     
+000044f1  HibernateDataGet               
+00004515  GrFontGlyphDataGet             
+00004537  LCDModeSet                     
+00004579  GrFontCodepageGet              
+00004597  WidgetAdd                      
+000045b5  GPIOPinTypeGPIOOutput          
+000045cd  HibernateIntStatus             
+000045e5  TimerIntRegister               
+000045fd  _args_main                     
+00004615  strcmp                         
+0000462d  GrStringDraw                   
+00004659  CanvasMsgProc                  
+0000466d  HibernateEnableExpClk          
+00004681  HibernateIntClear              
+00004695  HibernateRTCEnable             
+000046a9  HibernateRequest               
+000046bd  WidgetMutexGet                 
+000046d1  _register_unlock               
+000046d7  _register_lock                 
+000046df  _nop                           
+000046e5  strcpy                         
+000046f9  GPIOPinTypeLCD                 
+0000470b  TimerLoadSet                   
+0000471d  HibernateCalendarSet           
+0000472d  HibernateIsActive              
+0000473d  IntMasterEnable                
+0000475d  GrImageDraw                    
+0000476b  TimerEnable                    
+00004779  __TI_decompress_none           
+00004787  CPUcpsie                       
+00004793  _system_post_cinit             
+00004795  HibernateCalendarMatchSet      
+000047a1  HibernateCounterMode           
+000047ad  LCDIDDCommandWrite             
+000047b9  LCDIDDDataWrite                
+000047c5  OnInfoStrBtnPress              
+000047d1  __TI_zero_init                 
+000047dd  GrMapISO8859_1_Unicode         
+000047e5  TimerIntEnable                 
+000047ed  GPIOPinRead                    
+000047f3  GPIOPinWrite                   
+000047f9  GrContextFontSet               
+000047ff  ResetISR                       
+00004805  SysCtlDelay                    
+0000480b  WidgetMutexPut                 
+00004811  LCDDMAConfigSet                
+00004815  LCDIDDConfigSet                
+00004819  TimerIntClear                  
+0000481d  WidgetDefaultMsgProc           
+00004821  _system_pre_init               
+00005a8c  g_sFontCm16                    
+00005b54  g_sFontCm20                    
+00005e58  g_sKentec320x240x16_SSD2119    
+00005e80  g_pi32TouchParameters          
+00005e9c  g_psDefaultCodePointMapTable   
+00006158  __TI_Handler_Table_Base        
+00006164  __TI_Handler_Table_Limit       
+00006178  __TI_CINIT_Base                
+00006190  __TI_CINIT_Limit               
+20000000  g_pfnRAMVectors                
+2000026c  g_sAMPMDwnBtn                  
+200002bc  g_sAMPMUpBtn                   
+2000030c  g_sDateNextBtn                 
+2000035c  g_sDateTimeSetBtn              
+200003ac  g_sDayDwnBtn                   
+200003fc  g_sDayUpBtn                    
+2000044c  g_sHourDwnBtn                  
+2000049c  g_sHourUpBtn                   
+200004ec  g_sInfoStrBtn                  
+2000053c  g_sMinDwnBtn                   
+2000058c  g_sMinUpBtn                    
+200005dc  g_sMonDwnBtn                   
+2000062c  g_sMonUpBtn                    
+2000067c  g_sTimeDoneBtn                 
+200006cc  g_sYearDwnBtn                  
+2000071c  g_sYearUpBtn                   
+2000076c  g_sAMPMText                    
+200007ac  g_sDateScreen                  
+200007ec  g_sDateTime                    
+2000082c  g_sDayText                     
+2000086c  g_sHibCount                    
+200008ac  g_sHourText                    
+200008ec  g_sInfoStr1                    
+2000092c  g_sInfoStr2                    
+2000096c  g_sInfoStr3                    
+200009ac  g_sMainScreen                  
+200009ec  g_sMinText                     
+20000a2c  g_sMonText                     
+20000a6c  g_sTimeScreen                  
+20000aac  g_sWakeInfo                    
+20000aec  g_sYearText                    
+20000b5c  g_sRoot                        
+20000ba0  __TI_cleanup_ptr               
+20000ba4  __TI_dtors_ptr                 
+20000ba8  __TI_enable_exit_profile_output
+20000bac  _lock                          
+20000bb0  _unlock                        
+20000bb8  main_func_sp                   
+20000bbc  g_i16TouchMin                  
+20000bc0  __stack                        
+20000fc0  __STACK_END                    
+20000fc0  __STACK_TOP                    
+20001100  g_pcDateTimeBuf                
+20001128  g_pcHibBuf                     
+20001150  g_pcInfoBuf0                   
+20001178  g_pcInfoBuf1                   
+200011a0  g_pcInfoBuf2                   
+200011c8  g_pcInfoBuf3                   
+200011f0  g_pcWakeBuf                    
+20001250  g_pcYearBuf                    
+20001258  g_pcAMPMBuf                    
+2000125c  g_pcDayBuf                     
+20001260  g_pcHourBuf                    
+20001264  g_pcMinBuf                     
+20001268  g_pcMonBuf                     
+20001270  g_ui32DayIdx                   
+20001274  g_ui32HourIdx                  
+20001278  g_ui32MinIdx                   
+2000127c  g_ui32MonthIdx                 
+20001280  g_ui32YearIdx                  
+20001284  g_i16TouchX                    
+20001286  g_i16TouchY                    
+20001288  g_bHibernate                   
+20001289  g_bMainScreen                  
+2000128a  g_bSetDate                     
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
+UNDEFED   usnprintf                      
+
+[216 symbols]
