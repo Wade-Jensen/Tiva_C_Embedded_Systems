@@ -1,7 +1,7 @@
 ******************************************************************************
                   TI ARM Linker PC v16.9.1                     
 ******************************************************************************
->> Linked Wed Apr 05 14:02:46 2017
+>> Linked Wed Apr 26 12:34:57 2017
 
 OUTPUT FILE NAME:   <uart_echo.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 00003f41
@@ -12,7 +12,7 @@ MEMORY CONFIGURATION
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
   FLASH                 00000000   00100000  00008332  000f7cce  R  X
-  SRAM                  20000000   00040000  000004d4  0003fb2c  RW X
+  SRAM                  20000000   00040000  0000028c  0003fd74  RW X
 
 
 SEGMENT ALLOCATION MAP
@@ -24,10 +24,10 @@ run origin  load origin   length   init length attrs members
   00000200    00000200    000043d6   000043d6    r-x .text
   000045d8    000045d8    00003d24   00003d24    r-- .const
   00008300    00008300    00000038   00000038    r-- .cinit
-20000000    20000000    000004d4   00000000    rw-
-  20000000    20000000    00000400   00000000    rw- .stack
-  20000400    20000400    000000b4   00000000    rw- .bss
-  200004b4    200004b4    00000020   00000000    rw- .data
+20000000    20000000    0000028c   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+  20000200    20000200    0000006c   00000000    rw- .bss
+  2000026c    2000026c    00000020   00000000    rw- .data
 
 
 SECTION ALLOCATION MAP
@@ -168,31 +168,31 @@ section   page    origin      length       input sections
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
 
-.stack     0    20000000    00000400     UNINITIALIZED
-                  20000000    00000400     --HOLE--
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000200     --HOLE--
 
-.bss       0    20000400    000000b4     UNINITIALIZED
-                  20000400    00000064     uart_echo.obj (.bss:buff$1)
-                  20000464    0000002c     (.common:sContext)
-                  20000490    00000020     (.common:g_pui8Dictionary)
-                  200004b0    00000004     (.common:g_psGrLibDefaults)
+.bss       0    20000200    0000006c     UNINITIALIZED
+                  20000200    0000002c     (.common:sContext)
+                  2000022c    00000020     (.common:g_pui8Dictionary)
+                  2000024c    0000001c     uart_echo.obj (.bss:buff$1)
+                  20000268    00000004     (.common:g_psGrLibDefaults)
 
-.data      0    200004b4    00000020     UNINITIALIZED
-                  200004b4    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.data:$O1$$)
-                  200004c0    00000008                                   : _lock.obj (.data:$O1$$)
-                  200004c8    00000004                                   : errno.obj (.data)
-                  200004cc    00000004                                   : stkdepth_vars.obj (.data)
-                  200004d0    00000004     uart_echo.obj (.data)
+.data      0    2000026c    00000020     UNINITIALIZED
+                  2000026c    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.data:$O1$$)
+                  20000278    00000008                                   : _lock.obj (.data:$O1$$)
+                  20000280    00000004                                   : errno.obj (.data)
+                  20000284    00000004                                   : stkdepth_vars.obj (.data)
+                  20000288    00000004     uart_echo.obj (.data)
 
 MODULE SUMMARY
 
        Module                         code    ro data   rw data
        ------                         ----    -------   -------
     .\
-       uart_echo.obj                  712     0         148    
+       uart_echo.obj                  712     0         76     
        startup_ccs.obj                12      512       0      
     +--+------------------------------+-------+---------+---------+
-       Total:                         724     512       148    
+       Total:                         724     512       76     
                                                                
     .\drivers\
        frame.obj                      504     12507     0      
@@ -258,17 +258,17 @@ MODULE SUMMARY
     +--+------------------------------+-------+---------+---------+
        Total:                         7814    257       28     
                                                                
-       Stack:                         0       0         1024   
+       Stack:                         0       0         512    
        Linker Generated:              0       53        0      
     +--+------------------------------+-------+---------+---------+
-       Grand Total:                   17362   16215     1236   
+       Grand Total:                   17362   16215     652    
 
 
 LINKER GENERATED COPY TABLES
 
 __TI_cinit_table @ 00008328 records: 2, size/record: 8, table size: 16
-	.data: load addr=00008300, load size=00000011 bytes, run addr=200004b4, run size=00000020 bytes, compression=lzss
-	.bss: load addr=00008320, load size=00000008 bytes, run addr=20000400, run size=000000b4 bytes, compression=zero_init
+	.data: load addr=00008300, load size=00000011 bytes, run addr=2000026c, run size=00000020 bytes, compression=lzss
+	.bss: load addr=00008320, load size=00000008 bytes, run addr=20000200, run size=0000006c bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
@@ -331,19 +331,19 @@ UNDEFED   SHT$$INIT_ARRAY$$Limit
 00003601  UARTIntHandler                 
 00004595  UARTIntStatus                  
 0000441d  UARTSend                       
-20000400  __STACK_END                    
-00000400  __STACK_SIZE                   
+20000200  __STACK_END                    
+00000200  __STACK_SIZE                   
 20000200  __STACK_TOP                    
 00008328  __TI_CINIT_Base                
 00008338  __TI_CINIT_Limit               
 00008314  __TI_Handler_Table_Base        
 00008320  __TI_Handler_Table_Limit       
 00003ba9  __TI_auto_init                 
-200004b4  __TI_cleanup_ptr               
+2000026c  __TI_cleanup_ptr               
 00003d51  __TI_decompress_lzss           
 0000454d  __TI_decompress_none           
-200004b8  __TI_dtors_ptr                 
-200004bc  __TI_enable_exit_profile_output
+20000270  __TI_dtors_ptr                 
+20000274  __TI_enable_exit_profile_output
 ffffffff  __TI_pprof_out_hndl            
 00000a45  __TI_printfi                   
 ffffffff  __TI_prof_data_size            
@@ -376,20 +376,20 @@ ffffffff  __c_args__
 00004455  _args_main                     
 00003f41  _c_int00                       
 00007e53  _ctypes_                       
-200004c0  _lock                          
+20000278  _lock                          
 000044d3  _nop                           
 000044cb  _register_lock                 
 000044c5  _register_unlock               
 0000411f  _system_post_cinit             
 000045d3  _system_pre_init               
-200004c4  _unlock                        
+2000027c  _unlock                        
 00003f99  abort                          
 0000403d  atoi                           
 ffffffff  binit                          
 00004089  copy_in                        
 000044d9  copysign                       
 000044d9  copysignl                      
-200004c8  errno                          
+20000280  errno                          
 00003fa1  exit                           
 00003e21  frexp                          
 00003e21  frexpl                         
@@ -401,11 +401,11 @@ ffffffff  binit
 00003505  ldexpl                         
 00003fe9  ltoa                           
 00002c95  main                           
-200004cc  main_func_sp                   
+20000284  main_func_sp                   
 00004439  memccpy                        
 0000390d  memcpy                         
 00003abd  memset                         
-20000464  sContext                       
+20000200  sContext                       
 00003505  scalbn                         
 00003505  scalbnl                        
 00003e85  sprintf                        
@@ -419,7 +419,7 @@ address   name
 -------   ----                           
 00000000  __TI_static_base__             
 00000000  g_pfnVectors                   
-00000400  __STACK_SIZE                   
+00000200  __STACK_SIZE                   
 00000a45  __TI_printfi                   
 00001341  Kentec320x240x16_SSD2119Init   
 000017c5  PinoutSet                      
@@ -527,16 +527,16 @@ address   name
 00008328  __TI_CINIT_Base                
 00008338  __TI_CINIT_Limit               
 20000000  __stack                        
+20000200  __STACK_END                    
 20000200  __STACK_TOP                    
-20000400  __STACK_END                    
-20000464  sContext                       
-200004b4  __TI_cleanup_ptr               
-200004b8  __TI_dtors_ptr                 
-200004bc  __TI_enable_exit_profile_output
-200004c0  _lock                          
-200004c4  _unlock                        
-200004c8  errno                          
-200004cc  main_func_sp                   
+20000200  sContext                       
+2000026c  __TI_cleanup_ptr               
+20000270  __TI_dtors_ptr                 
+20000274  __TI_enable_exit_profile_output
+20000278  _lock                          
+2000027c  _unlock                        
+20000280  errno                          
+20000284  main_func_sp                   
 ffffffff  __TI_pprof_out_hndl            
 ffffffff  __TI_prof_data_size            
 ffffffff  __TI_prof_data_start           

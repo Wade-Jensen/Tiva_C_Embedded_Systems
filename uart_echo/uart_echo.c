@@ -113,7 +113,7 @@ UARTIntHandler(void)
     // Loop while there are characters in the receive FIFO.
     //
 
-    static char buff[100];
+    static char buff[25];
     static uint32_t i = 0;
     char str[100];
 
