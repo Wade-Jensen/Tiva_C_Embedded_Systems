@@ -6,13 +6,14 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CFG_SRCS += \
-../mutex.cfg 
+../empty.cfg 
 
 CMD_SRCS += \
 ../DK_TM4C129X.cmd 
 
 C_SRCS += \
 ../DK_TM4C129X.c \
+../empty.c \
 ../mutex.c 
 
 GEN_CMDS += \
@@ -27,6 +28,7 @@ GEN_MISC_DIRS += \
 
 C_DEPS += \
 ./DK_TM4C129X.d \
+./empty.d \
 ./mutex.d 
 
 GEN_OPTS += \
@@ -34,6 +36,7 @@ GEN_OPTS += \
 
 OBJS += \
 ./DK_TM4C129X.obj \
+./empty.obj \
 ./mutex.obj 
 
 GEN_MISC_DIRS__QUOTED += \
@@ -41,10 +44,12 @@ GEN_MISC_DIRS__QUOTED += \
 
 OBJS__QUOTED += \
 "DK_TM4C129X.obj" \
+"empty.obj" \
 "mutex.obj" 
 
 C_DEPS__QUOTED += \
 "DK_TM4C129X.d" \
+"empty.d" \
 "mutex.d" 
 
 GEN_FILES__QUOTED += \
@@ -53,6 +58,7 @@ GEN_FILES__QUOTED += \
 
 C_SRCS__QUOTED += \
 "../DK_TM4C129X.c" \
+"../empty.c" \
 "../mutex.c" 
 
 

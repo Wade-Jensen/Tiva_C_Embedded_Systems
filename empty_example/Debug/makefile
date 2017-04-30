@@ -11,7 +11,16 @@ GEN_CMDS__FLAG := -l"configPkg/linker.cmd"
 
 ORDERED_OBJS += \
 "./DK_TM4C129X.obj" \
+"./empty.obj" \
 "./mutex.obj" \
+"./drivers/buttons.obj" \
+"./drivers/frame.obj" \
+"./drivers/kentec320x240x16_ssd2119.obj" \
+"./drivers/mx66l51235f.obj" \
+"./drivers/pinout.obj" \
+"./drivers/sound.obj" \
+"./drivers/touch.obj" \
+"./drivers/usb_sound.obj" \
 "../DK_TM4C129X.cmd" \
 $(GEN_CMDS__FLAG) \
 -l"C:/ti/tirtos_tivac_2_16_00_08/products/TivaWare_C_Series-2.1.1.71b/grlib/ccs/Debug/grlib.lib" \
@@ -27,7 +36,9 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include drivers/subdir_vars.mk
 -include subdir_rules.mk
+-include drivers/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -158,8 +169,8 @@ empty_example.hex: $(EXE_OUTPUTS)
 clean:
 	-$(RM) $(GEN_CMDS__QUOTED)$(GEN_MISC_FILES__QUOTED)$(BIN_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)$(GEN_OPTS__QUOTED)
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
-	-$(RM) "DK_TM4C129X.obj" "mutex.obj" 
-	-$(RM) "DK_TM4C129X.d" "mutex.d" 
+	-$(RM) "DK_TM4C129X.obj" "empty.obj" "mutex.obj" "drivers\buttons.obj" "drivers\frame.obj" "drivers\kentec320x240x16_ssd2119.obj" "drivers\mx66l51235f.obj" "drivers\pinout.obj" "drivers\sound.obj" "drivers\touch.obj" "drivers\usb_sound.obj" 
+	-$(RM) "DK_TM4C129X.d" "empty.d" "mutex.d" "drivers\buttons.d" "drivers\frame.d" "drivers\kentec320x240x16_ssd2119.d" "drivers\mx66l51235f.d" "drivers\pinout.d" "drivers\sound.d" "drivers\touch.d" "drivers\usb_sound.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

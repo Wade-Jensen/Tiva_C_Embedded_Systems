@@ -128,74 +128,74 @@ package/%.xdc.inc package/%_configPkg.c package/%.defs.h: %.xdc $(PKGCFGS)
 	@$(MSG) generating interfaces for package configPkg" (because $@ is older than $(firstword $?))" ...
 	$(XSRUN) -f xdc/services/intern/cmd/build.xs $(MK_IDLOPTS) -m package/package.xdc.dep -i package/package.xdc.inc package.xdc
 
-.dlls,em4f .dlls: mutex.pem4f
+.dlls,em4f .dlls: empty.pem4f
 
--include package/cfg/mutex_pem4f.mak
--include package/cfg/mutex_pem4f.cfg.mak
+-include package/cfg/empty_pem4f.mak
+-include package/cfg/empty_pem4f.cfg.mak
 ifeq (,$(MK_NOGENDEPS))
--include package/cfg/mutex_pem4f.dep
+-include package/cfg/empty_pem4f.dep
 endif
-mutex.pem4f: package/cfg/mutex_pem4f.xdl
+empty.pem4f: package/cfg/empty_pem4f.xdl
 	@
 
 
 ifeq (,$(wildcard .libraries,em4f))
-mutex.pem4f package/cfg/mutex_pem4f.c: .libraries,em4f
+empty.pem4f package/cfg/empty_pem4f.c: .libraries,em4f
 endif
 
-package/cfg/mutex_pem4f.c package/cfg/mutex_pem4f.h package/cfg/mutex_pem4f.xdl: override _PROG_NAME := mutex.xem4f
-package/cfg/mutex_pem4f.c: package/cfg/mutex_pem4f.cfg
-package/cfg/mutex_pem4f.xdc.inc: package/cfg/mutex_pem4f.xdl
-package/cfg/mutex_pem4f.xdl package/cfg/mutex_pem4f.c: .interfaces
+package/cfg/empty_pem4f.c package/cfg/empty_pem4f.h package/cfg/empty_pem4f.xdl: override _PROG_NAME := empty.xem4f
+package/cfg/empty_pem4f.c: package/cfg/empty_pem4f.cfg
+package/cfg/empty_pem4f.xdc.inc: package/cfg/empty_pem4f.xdl
+package/cfg/empty_pem4f.xdl package/cfg/empty_pem4f.c: .interfaces
 
 clean:: clean,em4f
-	-$(RM) package/cfg/mutex_pem4f.cfg
-	-$(RM) package/cfg/mutex_pem4f.dep
-	-$(RM) package/cfg/mutex_pem4f.c
-	-$(RM) package/cfg/mutex_pem4f.xdc.inc
+	-$(RM) package/cfg/empty_pem4f.cfg
+	-$(RM) package/cfg/empty_pem4f.dep
+	-$(RM) package/cfg/empty_pem4f.c
+	-$(RM) package/cfg/empty_pem4f.xdc.inc
 
 clean,em4f::
-	-$(RM) mutex.pem4f
-.executables,em4f .executables: mutex.xem4f
+	-$(RM) empty.pem4f
+.executables,em4f .executables: empty.xem4f
 
-mutex.xem4f: |mutex.pem4f
+empty.xem4f: |empty.pem4f
 
--include package/cfg/mutex.xem4f.mak
-mutex.xem4f: package/cfg/mutex_pem4f.oem4f 
+-include package/cfg/empty.xem4f.mak
+empty.xem4f: package/cfg/empty_pem4f.oem4f 
 	$(RM) $@
 	@$(MSG) lnkem4f $@ ...
 	$(RM) $(XDCCFGDIR)/$@.map
-	$(ti.targets.arm.elf.M4F.rootDir)/bin/armcl -fs $(XDCCFGDIR)$(dir $@). -q -u _c_int00 --silicon_version=7M4 -z --strict_compatibility=on  -o $@ package/cfg/mutex_pem4f.oem4f   package/cfg/mutex_pem4f.xdl  -w -c -m $(XDCCFGDIR)/$@.map -l $(ti.targets.arm.elf.M4F.rootDir)/lib/libc.a
+	$(ti.targets.arm.elf.M4F.rootDir)/bin/armcl -fs $(XDCCFGDIR)$(dir $@). -q -u _c_int00 --silicon_version=7M4 -z --strict_compatibility=on  -o $@ package/cfg/empty_pem4f.oem4f   package/cfg/empty_pem4f.xdl  -w -c -m $(XDCCFGDIR)/$@.map -l $(ti.targets.arm.elf.M4F.rootDir)/lib/libc.a
 	
-mutex.xem4f: export C_DIR=
-mutex.xem4f: PATH:=$(ti.targets.arm.elf.M4F.rootDir)/bin/;$(PATH)
-mutex.xem4f: Path:=$(ti.targets.arm.elf.M4F.rootDir)/bin/;$(PATH)
+empty.xem4f: export C_DIR=
+empty.xem4f: PATH:=$(ti.targets.arm.elf.M4F.rootDir)/bin/;$(PATH)
+empty.xem4f: Path:=$(ti.targets.arm.elf.M4F.rootDir)/bin/;$(PATH)
 
-mutex.test test,em4f test: mutex.xem4f.test
+empty.test test,em4f test: empty.xem4f.test
 
-mutex.xem4f.test:: mutex.xem4f
+empty.xem4f.test:: empty.xem4f
 ifeq (,$(_TESTLEVEL))
-	@$(MAKE) -R -r --no-print-directory -f $(XDCROOT)/packages/xdc/bld/xdc.mak _TESTLEVEL=1 mutex.xem4f.test
+	@$(MAKE) -R -r --no-print-directory -f $(XDCROOT)/packages/xdc/bld/xdc.mak _TESTLEVEL=1 empty.xem4f.test
 else
 	@$(MSG) running $<  ...
-	$(call EXEC.mutex.xem4f, ) 
+	$(call EXEC.empty.xem4f, ) 
 endif
 
 clean,em4f::
-	-$(RM) $(wildcard .tmp,mutex.xem4f,*)
+	-$(RM) $(wildcard .tmp,empty.xem4f,*)
 
 
 clean:: clean,em4f
 
 clean,em4f::
-	-$(RM) mutex.xem4f
+	-$(RM) empty.xem4f
 %,copy:
 	@$(if $<,,$(MSG) don\'t know how to build $*; exit 1)
 	@$(MSG) cp $< $@
 	$(RM) $@
 	$(CP) $< $@
-mutex_pem4f.oem4f,copy : package/cfg/mutex_pem4f.oem4f
-mutex_pem4f.sem4f,copy : package/cfg/mutex_pem4f.sem4f
+empty_pem4f.oem4f,copy : package/cfg/empty_pem4f.oem4f
+empty_pem4f.sem4f,copy : package/cfg/empty_pem4f.sem4f
 
 $(XDCCFGDIR)%.c $(XDCCFGDIR)%.h $(XDCCFGDIR)%.xdl: $(XDCCFGDIR)%.cfg $(XDCROOT)/packages/xdc/cfg/Main.xs | .interfaces
 	@$(MSG) "configuring $(_PROG_NAME) from $< ..."

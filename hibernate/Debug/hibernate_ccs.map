@@ -1,7 +1,7 @@
 ******************************************************************************
-                  TI ARM Linker PC v16.9.0                     
+                  TI ARM Linker PC v16.9.1                     
 ******************************************************************************
->> Linked Wed Mar 29 17:50:53 2017
+>> Linked Sun Apr 30 17:08:56 2017
 
 OUTPUT FILE NAME:   <hibernate.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 00003d85
@@ -338,7 +338,7 @@ MODULE SUMMARY
     +--+------------------------------+-------+---------+---------+
        Total:                         6966    4695      401    
                                                                
-    C:\ti\ccsv7\tools\compiler\ti-cgt-arm_16.9.0.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+    C:\ti\ccsv7\tools\compiler\ti-cgt-arm_16.9.1.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
        memcpy_t2.obj                  156     0         0      
        memset_t2.obj                  122     0         0      
        autoinit.obj                   112     0         0      
